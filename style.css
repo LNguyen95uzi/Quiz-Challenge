@@ -1,0 +1,17 @@
+/* Align body and title screen, manage background image */
+
+body {
+    text-align: center;
+    background-size: cover;
+    padding-top: 50px;
+}
+
+.openTitle {
+    background: royalblue;
+    border: solid 2px;
+    position: relative;
+}
+
+img {
+    width: 50%;
+}
