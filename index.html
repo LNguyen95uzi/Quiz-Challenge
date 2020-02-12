@@ -2,14 +2,16 @@
 <html lang="en">
 
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>World Trivia Quiz Time!</title>
-
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
+    <title>World Trivia Quiz!</title>
 
 </head>
 
@@ -22,16 +24,18 @@
         <!-- Array of questions listed here -->
         <div id="question" class="text"></div>
         <!-- Multiple Choice Answers -->
-        <div id="Quiz" class="text">
-            <div id="question">Question</div>
-            <div id="answer1">A</div>
-            <div id="answer2">B</div>
-            <div id="answer3">C</div>
-            <div id="answer4">D</div>
+        <div id="choices" class="text">
+            <div id="A"></div>
+            <div id="B"></div>
+            <div id="C"></div>
+            <div id="D"></div>
         </div>
-        <div id="final" class="openTitle"></div>
-        <div id="images"></div>
-        <button id="start" class="button btn-primary">Take Your World Trivia Quiz Now!</button>
+
+        <div id = "final" class="openTitle"></div>
+        <div id = "images"></div>
+
+        <button id="start" class="button btn-primary">Take Quiz Now!</button>
+
     </div>
 
    <script src="script.js"></script>

@@ -1,7 +1,6 @@
 // Question List - Array form!
-var trivia = {
 
-    questions = [[
+questions = [[
     "What is the only country that is also a continent?",
     "A. United States of America",
     "B. Vietnam",
@@ -81,13 +80,57 @@ var trivia = {
     "D. ~300",
     "B. ~2000 different languages are spoken on the African continent",
 ]
-]
-
-};
+];
 
 var questionQuiz = document.getElementById("quiz");
 var questionSubmit = document.getElementById("results");
 var score = document.getElementById("score");
 var timer = document.getElementById("timer");
 
+var startQuiz = document.getElementById("start");
 
+var score = 0;
+var secondsLeft = 75;
+var currentQuestionIndex = 0;
+
+function goToNextQuestion(whatTheUserClicked) {
+    var correctText = questions[currentQuestionIndex].answer;
+
+    if(whatTheUserClicked === correctText) {
+        // console.log("correct!");
+        score++;
+    }
+    else {
+        // console.log("sorry that is not right.");
+    }
+    currentQuestionIndex++;
+    getNewQuestion(currentQuestionIndex);
+
+}
+
+function answerClickSetUp() {
+    var a = document.getElementById("A");
+    var b = document.getElementById("B");
+    var c = document.getElementById("C");
+    var d = document.getElementById("D");
+
+    a.addEventListener("click", function () {goToNextQuestion(a.innerText); });
+    b.addEventListener("click", function () {goToNextQuestion(b.innerText); })
+    c.addEventListener("click", function () {goToNextQuestion(c.innerText); })
+    d.addEventListener("click", function () {goToNextQuestion(d.innerHTML); })
+
+}
+
+answerClickSetUp() ;
+
+startQuiz.addEventListener("click", function () {
+    getNewQuestion(currentQuestionIndex);
+});
+
+var currentQuestion;
+function getNewQuestion(questionIndex) {
+    var question = questions[questionIndex];
+    currentQuestion = question;
+    var title = question.title;
+    console.log(title);
+}
