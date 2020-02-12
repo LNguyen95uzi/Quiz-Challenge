@@ -1,7 +1,7 @@
 // Question List - Array form!
+var trivia = {
 
-
-var questions = [[
+    questions = [[
     "What is the only country that is also a continent?",
     "A. United States of America",
     "B. Vietnam",
@@ -83,33 +83,11 @@ var questions = [[
 ]
 ]
 
-var nextQuestion = 0;
-var answerVar = questions[nextQuestion][5], answerText = questions[nextQuestions][7];
-var intervalID;
-var number = 30;
-var imagesHere = questions[nextQuestion][6];
-var incorrect = 0, correct = 0, restarting = true
+};
 
-
-
-
-// Starting score of 0
-var score = 0;
-
-// Loop over every question
-
-// Comparing Answers 
-if ((answer === true && questions[i].a === "t") ||
-    (anser === false && questions[i].a === "f")) {
-    // Increase score
-    score++;
-    alert("Correct!");
-}
-else {
-    alert("Wrong! Time has been reduced!");
-}
-
-// Showing total score at end
-alert("You got " + score + "/" + questions.length);
+var questionQuiz = document.getElementById("quiz");
+var questionSubmit = document.getElementById("results");
+var score = document.getElementById("score");
+var timer = document.getElementById("timer");
 
 
