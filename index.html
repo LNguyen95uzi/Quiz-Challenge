@@ -15,14 +15,25 @@
 
 </head>
 
+<header class="row">
+    <div class="col-md-6" id="Highscores">
+        <a href="./highScore.html">View Highscores</a>
+    </div>
+    <div class="col-md-6" id="timer">
+        Time: <span id="time">0</span>
+    </div>
+
+</header>
+
+
 <body background="background.jpg">
     <div class="container hud">
-        <h1 id="title" class="openTitle">Test your World Trivia</h1>
+        <h1 id="title" class="openTitle">Test Your World Trivia</h1>
         <div class="timeClock">Remaining Time:
             <span id="timer" class="text"></span>
         </div>
         <!-- Array of questions listed here -->
-        <div id="question" class="text"></div>
+        <div id="questions" class="text"></div>
         <!-- Multiple Choice Answers -->
         <div id="choices" class="text">
             <div id="A"></div>
@@ -33,8 +44,6 @@
 
         <div id = "final" class="openTitle"></div>
         <div id = "images"></div>
-
-        <button id="start" class="button btn-primary">Take Quiz Now!</button>
 
     </div>
 

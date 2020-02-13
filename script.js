@@ -1,136 +1,197 @@
 // Question List - Array form!
-
-questions = [[
-    "What is the only country that is also a continent?",
-    "A. United States of America",
-    "B. Vietnam",
-    "C. Australia",
-    "D. Venezuela",
-    "C. Australia",
-],
-[
-    "What was the first National Park in the United States?",
-    "A. Grand Canyon",
-    "B. Yosemite",
-    "C. Appalachian",
-    "D. Yellowstone",
-    "D. Yellowstone",
-],
-[
-    "Which city is the largest in the European Union?",
-    "A. Amsterdam",
-    "B. Barcelona",
-    "C. Paris",
-    "D. Berlin",
-    "C. Paris",
-],
-[
-    "What is the smallest country in the world?",
-    "A. Vatican",
-    "B. Monaco",
-    "C. Bahamas",
-    "D. Malta",
-    "A. Vatican",
-],
-[
-    "How many ACTIVE volcanoes are in Indonesia alone?",
-    "A. 4",
-    "B. 39",
-    "C. 127",
-    "D. 203",
-    "C. 127",
-],
-[
-    "After Brazil, which country is the next largest exporter of coffee?",
-    "A. Mexico",
-    "B. Vietnam",
-    "C. Belize",
-    "D. Turkey",
-    "B. Vietnam",
-],
-[
-    "Which South American country has the highest uninterrupted waterfall in the world?",
-    "A. Brazil",
-    "B. Argentina",
-    "C. Columbia",
-    "D. Venezuela",
-    "D. Venezuela",
-],
-[
-    "Which mountain range is the longest in the world?",
-    "A. Andes",
-    "B. Himalayan",
-    "C. Rocky",
-    "D. Great Dividing Range",
-    "A. Andes",
-],
-[
-    "Which city is the largest in Africa?",
-    "A. Marrakesh, Morocco",
-    "B. Cairo, Egypt",
-    "C. Lagos, Nigeria",
-    "D. Casablanca, Morocco",
-    "D. Lagos, Nigeria",
-],
-[
-    "About how many different languages are spoken in Africa?",
-    "A. ~54",
-    "B. ~2000",
-    "C. ~1500",
-    "D. ~300",
-    "B. ~2000 different languages are spoken on the African continent",
-]
+let questions = [
+    {
+        question: "What is the only country that is also a continent?",
+        a1: "A. United States of America",
+        a2: "B. Vietnam",
+        a3: "C. Australia",
+        a4: "D. Venezuela",
+        answer: "C. Australia",
+    },
+    {
+        question: "What was the first National Park in the United States?",
+        a1: "A. Grand Canyon",
+        a2: "B. Yosemite",
+        a3: "C. Appalachian",
+        a4: "D. Yellowstone",
+        answer: "D. Yellowstone",
+    },
+    {
+        question: "Which city is the largest in the European Union?",
+        a1: "A. Amsterdam",
+        a2: "B. Barcelona",
+        a3: "C. Paris",
+        a4: "D. Berlin",
+        answer: "C. Paris",
+    },
+    {
+        question: "What is the smallest country in the world?",
+        a1: "A. Vatican",
+        a2: "B. Monaco",
+        a3: "C. Bahamas",
+        a4: "D. Malta",
+        answer: "A. Vatican",
+    },
+    {
+        question: "How many ACTIVE volcanoes are in Indonesia alone?",
+        a1: "A. 4",
+        a2: "B. 39",
+        a3: "C. 127",
+        a4: "D. 203",
+        answer: "C. 127",
+    },
+    {
+        question: "After Brazil, which country is the next largest exporter of coffee?",
+        a1: "A. Mexico",
+        a2: "B. Vietnam",
+        a3: "C. Belize",
+        a4: "D. Turkey",
+        answer: "B. Vietnam",
+    },
+    {
+        question: "Which South American country has the highest uninterrupted waterfall in the world?",
+        a1: "A. Brazil",
+        a2: "B. Argentina",
+        a3: "C. Columbia",
+        a4: "D. Venezuela",
+        answer: "D. Venezuela",
+    },
+    {
+        question: "Which mountain range is the longest in the world?",
+        a1: "A. Andes",
+        a2: "B. Himalayan",
+        a3: "C. Rocky",
+        a4: "D. Great Dividing Range",
+        answer: "A. Andes",
+    },
+    {
+        question: "Which city is the largest in Africa?",
+        a1: "A. Marrakesh, Morocco",
+        a2: "B. Cairo, Egypt",
+        a3: "C. Lagos, Nigeria",
+        a4: "D. Casablanca, Morocco",
+        answer: "D. Lagos, Nigeria",
+    },
+    {
+        question: "About how many different languages are spoken in Africa?",
+        a1: "A. ~54",
+        a2: "B. ~2000",
+        a3: "C. ~1500",
+        a4: "D. ~300",
+        answer: "B. ~2000 different languages are spoken on the African continent",
+    }
 ];
 
-var questionQuiz = document.getElementById("quiz");
-var questionSubmit = document.getElementById("results");
-var score = document.getElementById("score");
-var timer = document.getElementById("timer");
+let questionIndex = 0;
+let time = questions.length * 15;
+let timerId;
 
-var startQuiz = document.getElementById("start");
+let timeEl = document.querySelector("#time");
 
-var score = 0;
-var secondsLeft = 75;
-var currentQuestionIndex = 0;
 
-function goToNextQuestion(whatTheUserClicked) {
-    var correctText = questions[currentQuestionIndex].answer;
+// console.log(document.getElementById("questions"));
 
-    if(whatTheUserClicked === correctText) {
-        // console.log("correct!");
-        score++;
-    }
-    else {
-        // console.log("sorry that is not right.");
-    }
-    currentQuestionIndex++;
-    getNewQuestion(currentQuestionIndex);
+let masterQuiz = document.getElementById("questions");
 
-}
+// Create element, assign to a variable so it can be referenced later 
+let startBtn = document.createElement("button"); // Create button
 
-function answerClickSetUp() {
-    var a = document.getElementById("A");
-    var b = document.getElementById("B");
-    var c = document.getElementById("C");
-    var d = document.getElementById("D");
-
-    a.addEventListener("click", function () {goToNextQuestion(a.innerText); });
-    b.addEventListener("click", function () {goToNextQuestion(b.innerText); })
-    c.addEventListener("click", function () {goToNextQuestion(c.innerText); })
-    d.addEventListener("click", function () {goToNextQuestion(d.innerHTML); })
-
-}
-
-answerClickSetUp() ;
-
-startQuiz.addEventListener("click", function () {
-    getNewQuestion(currentQuestionIndex);
+// Add content and behavior to element
+startBtn.textContent = "Start Travel Quiz Now";
+// Event listener that runs function when "event" happens, passed as first argument in a string naming the event
+startBtn.addEventListener("click", function () {
+    // console.log('button double clicked');
 });
 
-var currentQuestion;
-function getNewQuestion(questionIndex) {
-    var question = questions[questionIndex];
-    currentQuestion = question;
-    var title = question.title;
-    console.log(title);
+// Only declared functions are hoisted
+function startBtnclickHandler(event) {
+    console.log(event.target);
+    startBtn.remove();
+    displayNextQuestion();
+    timerId = setInterval(tick, 1000);
+    timeEl.textContent = time;
 }
+
+function tick() {
+    time--;
+    timeEl.textContent = time;
+
+    if (time <= 0) {
+        quizEnd();
+    }
+}
+
+startBtn.addEventListener("click", startBtnclickHandler)
+
+// Attach floating element to an exisitng element in the document
+masterQuiz.append(startBtn);
+
+
+localStorage.setItem("recordedAnswers", JSON.stringify([]));
+
+function getHighScore(event) {
+    // data processing
+    console.log(event.target);
+    let highScore = event.target.textContent;
+
+    let highScoreArray = JSON.parse(
+        localStorage.getItem("highScore")
+    );
+
+    highScoreArray = highScoreArray.concat(highScore);
+    localStorage.setItem(
+        "highScore",
+        JSON.stringify(highScoreArray)
+    );
+
+    displayNextQuestion();
+}
+
+function displayNextQuestion() {
+    // Clear all nodes of the intended parent of new data divs.
+    while (masterQuiz.firstChild) {
+        masterQuiz.removeChild(masterQuiz.firstChild);
+    }
+
+    console.log("in displayQuestion()");
+    let currentQuestion = questions[questionIndex];
+
+    let question = document.createElement("div");
+    question.textContent = currentQuestion.question;
+    question.classList.add("title");
+
+    let a1 = document.createElement("div");
+    a1.textContent = currentQuestion.a1;
+    a1.classList.add("clickable");
+
+    let a2 = document.createElement("div");
+    a2.textContent = currentQuestion.a2;
+    a2.classList.add("clickable");
+
+    let a3 = document.createElement("div");
+    a3.textContent = currentQuestion.a3;
+    a3.classList.add("clickable");
+
+    let a4 = document.createElement("div");
+    a4.textContent = currentQuestion.a4;
+    a4.classList.add("clickable");
+
+    masterQuiz.append(
+        question,
+        a1,
+        a2,
+        a3,
+        a4
+    );
+
+    let clickableElements = document.querySelectorAll(".clickable");
+    // console.log("clickableElements", clickableElements.length);
+    for (let i = 0; i < clickableElements.length; i++) {
+        clickableElements[i].addEventListener(
+            "click",
+            getHighScore
+        );
+    }
+        questionIndex++;
+}
+
